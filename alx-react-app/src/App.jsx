@@ -1,17 +1,10 @@
-
+import WelcomeMessage from './components/WelcomeMessage'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function WelcomeMessage() {
-  return (
-    <div>
-      <h1>Welcome to ALX React APP!</h1>
-            <p>This is a simple JSX component.</p>
-    </div>
-  )
-}
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -26,7 +19,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      
+      <WelcomeMessage />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
