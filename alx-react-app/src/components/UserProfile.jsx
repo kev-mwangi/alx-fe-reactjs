@@ -1,9 +1,9 @@
 function UserProfile () {
     return (
       <div>
-        <h2>Kevin Mwangi</h2>
-        <p>Age:19</p>
-        <p>Bio: i love coding as a passion</p>
+        <h2>{props.name}</h2>
+       <p>Age: {props.age}</p>
+       <p>Bio: {props.bio}</p>
       </div>
     );
 }

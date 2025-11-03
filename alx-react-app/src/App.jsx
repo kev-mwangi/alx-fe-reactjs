@@ -22,11 +22,11 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <WelcomeMessage />
+      <WelcomeMessage  />
       <Header />
       <MainContent />
       <Footer />
-      <UserProfile/>
+      <UserProfile name="Kevin" age="19" bio="i love coding and learning new stuff"/>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
