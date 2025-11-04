@@ -22,7 +22,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <WelcomeMessage  />
+      <WelcomeMessage />
       <Header />
       <MainContent />
       <Footer />
