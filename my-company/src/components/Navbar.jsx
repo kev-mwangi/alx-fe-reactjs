@@ -1,15 +1,15 @@
-function App() {
+import { NavLink } from 'react-router-dom';
+
+
+const Navbar = () => {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </div>
-    </Router>
+    <nav>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/contact">Contact</NavLink>
+      <NavLink to="/service">Service</NavLink>
+    </nav>
   );
 }
 
-export default App;
+export default Navbar;
