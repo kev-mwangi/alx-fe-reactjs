@@ -1,13 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/home.jsx';
+import About from './components/About.jsx';
+import Navbar from './components/Navbar.jsx'
+import Contact from './components/Contact.jsx';
+import Service from './components/Service.jsx';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <Router>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -17,6 +23,13 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <Routes>
+       <Route path="/Home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/service" element={<Service />} />
+          <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <Navbar />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -28,6 +41,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      </Router>
     </>
   )
 }
