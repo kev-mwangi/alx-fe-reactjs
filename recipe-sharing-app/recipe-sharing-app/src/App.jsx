@@ -2,34 +2,49 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
+import { create } from 'zustand'
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  
+
+const useRecipeStore = create((set, get) => ({
+  // Initial state
+  recipes: [],
+  
+  // Actions
+  addRecipe: (newRecipe) => set((state) => ({ 
+    recipes: [...state.recipes, { ...newRecipe, id: Date.now().toString() }] 
+  })),
+  
+  initializeRecipes: (recipes) => set({ recipes }),
+  
+  // Additional useful actions
+  updateRecipe: (id, updatedRecipe) => set((state) => ({
+    recipes: state.recipes.map(recipe => 
+      recipe.id === id ? { ...recipe, ...updatedRecipe } : recipe
+    )
+  })),
+  
+  deleteRecipe: (id) => set((state) => ({
+    recipes: state.recipes.filter(recipe => recipe.id !== id)
+  })),
+  
+  getRecipeById: (id) => {
+    const state = get()
+    return state.recipes.find(recipe => recipe.id === id)
+  },
+  
+  clearRecipes: () => set({ recipes: [] }),
+  
+  // Utility getter
+  get recipeCount() {
+    return get().recipes.length
+  }
+}))
+
+
 }
 
-export default App
+
+export default useRecipeStore
