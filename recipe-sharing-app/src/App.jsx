@@ -5,7 +5,7 @@ import './App.css'
 import { create } from 'zustand'
 import { RecipeList } from './components/RecipeList'
 import { useRecipeStore } from './components/RecipeList'
-import { AddRecipeForm } from './components/RecipeList'
+import { AddRecipeForm } from './components/AddRecipeForm'
 function App() {
   const [count, setCount] = useState(0)
 
