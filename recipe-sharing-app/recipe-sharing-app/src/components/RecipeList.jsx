@@ -1,7 +1,24 @@
-import { useState } from 'react';
-import useRecipeStore from './recipeStore';
-// import { useRecipeStore } from './RecipeList';
-//   import { useRecipeStore } from './recipeStore';
+// RecipeList component
+  import { useRecipeStore } from './recipeStore';
+
+  const RecipeList = () => {
+    const recipes = useRecipeStore(state => state.recipes);
+
+    return (
+      <div>
+        {recipes.map(recipe => (
+          <div key={recipe.id}>
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  // AddRecipeForm component
+  import { useState } from 'react';
+  import { useRecipeStore } from './recipeStore';
 
   const AddRecipeForm = () => {
     const addRecipe = useRecipeStore(state => state.addRecipe);
@@ -32,4 +49,5 @@ import useRecipeStore from './recipeStore';
       </form>
     );
   };
-  export default AddRecipeForm
+
+  export { RecipeList, AddRecipeForm}
