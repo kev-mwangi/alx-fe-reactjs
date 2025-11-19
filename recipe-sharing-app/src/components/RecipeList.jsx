@@ -1,5 +1,8 @@
 // RecipeList component
   import { useRecipeStore } from './recipeStore';
+   // AddRecipeForm component
+  import { useState } from 'react';
+  import { useRecipeStore } from './recipeStore';
 
   const RecipeList = () => {
     const recipes = useRecipeStore(state => state.recipes);
@@ -16,9 +19,7 @@
     );
   };
 
-  // AddRecipeForm component
-  import { useState } from 'react';
-  import { useRecipeStore } from './recipeStore';
+ 
 
   const AddRecipeForm = () => {
     const addRecipe = useRecipeStore(state => state.addRecipe);
@@ -49,3 +50,5 @@
       </form>
     );
   };
+
+  export { useRecipeStore, RecipeList }
