@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Init Tailwind CSS",
+            "program": "${workspaceFolder}/recipe-sharing-platform/node_modules/tailwindcss/lib/cli.js",
+            "args": [
+                "init",
+                "-p"
+            ],
+            "cwd": "${workspaceFolder}/recipe-sharing-platform",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}
