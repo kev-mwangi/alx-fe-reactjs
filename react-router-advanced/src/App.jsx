@@ -12,10 +12,10 @@ function App() {
         <header>
           <h1>My React App</h1>
           <nav>
-            <a href="/">Home</a> 
-            <a href="/about">About</a>  
-           
-            <a href="/contact">Contact</a>
+            <Link to="/">Home</Link> | 
+          <Link to="/blog">Blog</Link> | 
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
           </nav>
         </header>
 
@@ -55,14 +55,7 @@ function AboutPage() {
   );
 }
 
-function PostsPage() {
-  return (
-    <div>
-      <h2>Posts</h2>
-      <p>This is where posts will be displayed.</p>
-    </div>
-  );
-}
+
 
 function ContactPage() {
   return (
