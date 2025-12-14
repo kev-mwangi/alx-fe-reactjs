@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
           <p>© 2024 My React App</p>
         </footer>
       </div>
+      <ProtectedRoute>
+            <Profile />
+
+          </ProtectedRoute>
     </BrowserRouter>
   );
 }
