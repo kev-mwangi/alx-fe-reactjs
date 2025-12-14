@@ -88,4 +88,36 @@ function ContactPage() {
   );
 }
 
+function Login() {
+  const handleLogin = () => {
+    
+    localStorage.setItem('isAuthenticated', 'true');
+    window.location.href = '/profile';
+  };
+  
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <button onClick={handleLogin}>Click to Login</button>
+      <p>After login, you'll be redirected to /profile</p>
+    </div>
+  );
+}
+function Login() {
+  const handleLogin = () => {
+    
+    localStorage.setItem('isAuthenticated', 'true');
+    window.location.href = '/profile';
+  };
+  
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <button onClick={handleLogin}>Click to Login</button>
+      <p>After login, you'll be redirected to /profile</p>
+    </div>
+  );
+}
+
+
 export default App;
