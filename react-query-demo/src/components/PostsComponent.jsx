@@ -1,15 +1,14 @@
-// src/components/PostsComponent.jsx
+
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import './PostsComponent.css'; // Optional for styling
 
-// Navigation component to simulate page changes
+
+
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
 
-// API service function
 const fetchPosts = async () => {
   console.log('🔵 API Call: Fetching posts from server...');
-  // Add delay to see loading states clearly
+  
   await new Promise(resolve => setTimeout(resolve, 1000));
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!response.ok) {
@@ -24,7 +23,7 @@ function PostsComponent() {
   const location = useLocation();
   const [forceRefetchCount, setForceRefetchCount] = useState(0);
   
-  // Use the useQuery hook to fetch posts
+  
   const {
     data: posts,
     isLoading,
@@ -37,40 +36,40 @@ function PostsComponent() {
     isFetched,
     isSuccess,
   } = useQuery({
-    queryKey: ['posts', forceRefetchCount], // forceRefetchCount changes cache key
+    queryKey: ['posts', forceRefetchCount], 
     queryFn: fetchPosts,
-    staleTime: 10000, // 10 seconds - data becomes stale after this
-    gcTime: 30000, // 30 seconds - garbage collection time (cache time)
+    staleTime: 10000, 
+    gcTime: 30000, 
     retry: 1,
   });
 
-  // Function to manually invalidate and refetch
+  
   const handleForceRefetch = () => {
     console.log('🔄 Manual refetch triggered');
-    setForceRefetchCount(prev => prev + 1); // Change query key to force refetch
+    setForceRefetchCount(prev => prev + 1); 
   };
 
-  // Function to refetch without changing cache key
+  
   const handleSoftRefetch = async () => {
     console.log('🔄 Soft refetch triggered');
     await refetch();
   };
 
-  // Function to clear cache (simulate)
+  
   const handleClearCache = () => {
-    // In a real app, you'd use queryClient.invalidateQueries()
+    
     console.log('🗑️ Cache clear requested (simulated)');
-    // For demo, we'll just force a refetch
+    
     handleForceRefetch();
   };
 
-  // Format timestamp
+  
   const formatTime = (timestamp) => {
     if (!timestamp) return 'Never';
     return new Date(timestamp).toLocaleTimeString();
   };
 
-  // Calculate time since last update
+  
   const getTimeSinceUpdate = () => {
     if (!dataUpdatedAt) return 'Never';
     const seconds = Math.floor((Date.now() - dataUpdatedAt) / 1000);
@@ -84,7 +83,7 @@ function PostsComponent() {
         <h2>React Query Caching Demo</h2>
         <p className="demo-subtitle">Observe how React Query handles caching when navigating away and back</p>
         
-        {/* Cache Status Display */}
+        
         <div className="cache-status">
           <div className="status-item">
             <span className="status-label">Cache Status:</span>
@@ -110,7 +109,7 @@ function PostsComponent() {
           </div>
         </div>
 
-        {/* Control Buttons */}
+        
         <div className="control-buttons">
           <button 
             onClick={handleSoftRefetch} 
@@ -150,7 +149,7 @@ function PostsComponent() {
         </div>
       </div>
 
-      {/* Posts Content */}
+      
       <div className="posts-content">
         {isLoading && !posts && (
           <div className="loading-container">
@@ -217,7 +216,7 @@ function PostsComponent() {
   );
 }
 
-// Home Component for navigation demo
+
 function HomePage() {
   return (
     <div className="home-container">
