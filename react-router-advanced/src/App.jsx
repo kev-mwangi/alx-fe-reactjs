@@ -21,10 +21,11 @@ function App() {
 
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
 
@@ -54,7 +55,23 @@ function AboutPage() {
     </div>
   );
 }
+function BlogPost() {
+  return (
+    <div>
+      <h1>Blog Post Details</h1>
+      <p>This is a detailed blog post view.</p>
+    </div>
+  );
+}
 
+function BlogList() {
+  return (
+    <div>
+      <h1>Blog List</h1>
+      <p>This is a list of blog posts.</p>
+    </div>
+  );
+}
 
 
 function ContactPage() {
