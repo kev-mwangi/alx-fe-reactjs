@@ -42,26 +42,25 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       </Router>
-      <nav className="navbar">
-      <div className="logo">
-        <Link to="/" className="nav-link">
+       <nav className={styles.navbar}>
+      <div className={styles.logo}>
+        <Link to="/" className={styles.navLink}>
           MyApp
         </Link>
       </div>
-      
-      <div className="nav-links">
-        <Link to="/" className="nav-link">
+      <div className={styles.navLinks}>
+        <Link to="/" className={styles.navLink}>
           Home
         </Link>
-        <Link to="/about" className="nav-link">
+        <Link to="/about" className={styles.navLink}>
           About
         </Link>
-        <Link to="/contact" className="nav-link">
+        <Link to="/contact" className={styles.navLink}>
           Contact
         </Link>
       </div>
     </nav>
-    </>
+      </>
   )
 }
 
