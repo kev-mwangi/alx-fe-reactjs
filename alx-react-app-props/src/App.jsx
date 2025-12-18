@@ -16,6 +16,20 @@ function App() {
   const [count, setCount] = useState(0)
   const UserContext = createContext();
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+  const contextValue = {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    login: (userData) => {
+      setUser(userData);
+      setIsAuthenticated(true);
+    },
+    logout: () => {
+      setUser(null);
+      setIsAuthenticated(false);
+    }
+  };
 
   return (
     <>
