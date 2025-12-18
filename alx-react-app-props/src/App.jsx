@@ -13,6 +13,8 @@ import UserInfo from './components/UserInfo'
 import React, { createContext, useState, useContext } from 'react';
 function App() {
   const [count, setCount] = useState(0)
+  const UserContext = createContext();
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
     <>
