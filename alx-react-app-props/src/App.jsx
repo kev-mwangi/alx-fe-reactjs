@@ -10,7 +10,8 @@ import UserProfile from './components/UserProfile'
 import UserDetails from './components/UserDetails'
 import ProfilePage from './components/ProfilePage'
 import UserInfo from './components/UserInfo'
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState,} from 'react';
+import UserContext from './contexts/UserContext'; 
 function App() {
   const [count, setCount] = useState(0)
   const UserContext = createContext();
