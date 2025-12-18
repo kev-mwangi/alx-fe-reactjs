@@ -1,22 +1,32 @@
-// RecipeList component
-
 import useRecipeStore from "./recipeStore";
+
+import React from 'react';
+
+
+const RecipeList = ({ recipes, onRecipeClick, onDelete }) => {
+  return (
+    <div className="recipe-list">
+      {recipes.length === 0 ? (
+        <p>No recipes found. Add your first recipe!</p>
+      ) : (
+        <div className="recipes-grid">
+          {recipes.map((recipe) => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+              onClick={() => onRecipeClick(recipe.id)}
+              onDelete={() => onDelete(recipe.id)}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 
    
   
-const RecipeList = () => {
-    const recipes = useRecipeStore(state => state.recipes);
 
-    return (
-      <div>
-        {recipes.map(recipe => (
-          <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
-          </div>
-        ))}
-      </div>
-    );
-  };
 
 export default RecipeList;
