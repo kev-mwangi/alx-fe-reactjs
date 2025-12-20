@@ -34,7 +34,7 @@ const EditRecipeForm = () => {
   }, [recipe]);
   
   const handleChange = (e) => {
-    const { name, value } = e.preventDefault;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value
@@ -65,9 +65,9 @@ const EditRecipeForm = () => {
     });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (event) => {
     
-    e.preventDefault();
+    event.preventDefault();
     
     
     const cleanData = {
@@ -84,6 +84,12 @@ const EditRecipeForm = () => {
     return (
       <div className="container mx-auto p-4">
         <h2 className="text-2xl font-bold">Recipe not found</h2>
+        <button
+          onClick={() => navigate('/')}
+          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Back to Recipes
+        </button>
       </div>
     );
   }
@@ -91,12 +97,12 @@ const EditRecipeForm = () => {
   return (
     <div className="container mx-auto p-4 max-w-2xl">
       <div className="bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-bold mb-6">Edit Recipe</h1>
+        <h1 className="text-3xl font-bold mb-6">Edit Recipe: {recipe.title}</h1>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Title
+              Title *
             </label>
             <input
               type="text"
@@ -110,7 +116,7 @@ const EditRecipeForm = () => {
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Description
+            
             </label>
             <textarea
               name="description"
@@ -171,14 +177,14 @@ const EditRecipeForm = () => {
           <div>
             <div className="flex justify-between items-center mb-2">
               <label className="block text-sm font-medium text-gray-700">
-                Ingredients
+                Ingredients *
               </label>
               <button
                 type="button"
                 onClick={() => addArrayField('ingredients')}
-                className="text-sm bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                className="text-sm bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition-colors"
               >
-                Add Ingredient
+                + Add Ingredient
               </button>
             </div>
             {formData.ingredients.map((ingredient, index) => (
@@ -189,15 +195,17 @@ const EditRecipeForm = () => {
                   onChange={(e) => handleArrayChange(index, e.target.value, 'ingredients')}
                   className="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder={`Ingredient ${index + 1}`}
+                  required
                 />
-                <button
-                  type="button"
-                  onClick={() => removeArrayField(index, 'ingredients')}
-                  className="bg-red-500 text-white px-3 rounded hover:bg-red-600 disabled:opacity-50"
-                  disabled={formData.ingredients.length === 1}
-                >
-                  ×
-                </button>
+                {formData.ingredients.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeArrayField(index, 'ingredients')}
+                    className="bg-red-500 text-white px-3 rounded hover:bg-red-600 transition-colors"
+                  >
+                    ×
+                  </button>
+                )}
               </div>
             ))}
           </div>
@@ -205,14 +213,14 @@ const EditRecipeForm = () => {
           <div>
             <div className="flex justify-between items-center mb-2">
               <label className="block text-sm font-medium text-gray-700">
-                Instructions
+                Instructions *
               </label>
               <button
                 type="button"
                 onClick={() => addArrayField('instructions')}
-                className="text-sm bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                className="text-sm bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition-colors"
               >
-                Add Step
+                + Add Step
               </button>
             </div>
             {formData.instructions.map((instruction, index) => (
@@ -227,31 +235,33 @@ const EditRecipeForm = () => {
                     className="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows="2"
                     placeholder={`Instruction step ${index + 1}`}
+                    required
                   />
-                  <button
-                    type="button"
-                    onClick={() => removeArrayField(index, 'instructions')}
-                    className="bg-red-500 text-white px-3 rounded hover:bg-red-600 self-start disabled:opacity-50"
-                    disabled={formData.instructions.length === 1}
-                  >
-                    ×
-                  </button>
+                  {formData.instructions.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeArrayField(index, 'instructions')}
+                      className="bg-red-500 text-white px-3 rounded hover:bg-red-600 transition-colors self-start"
+                    >
+                      ×
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
           
-          <div className="flex gap-4 pt-4">
+          <div className="flex gap-4 pt-6 border-t">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+              className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
             >
               Update Recipe
             </button>
             <button
               type="button"
               onClick={() => navigate(`/recipe/${id}`)}
-              className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+              className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition-colors"
             >
               Cancel
             </button>
