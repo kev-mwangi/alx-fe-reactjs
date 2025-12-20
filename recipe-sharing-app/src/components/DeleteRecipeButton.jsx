@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from './recipeStore';
 
 const DeleteRecipeButton = ({ recipeId }) => {
   const [showConfirm, setShowConfirm] = useState(false);
