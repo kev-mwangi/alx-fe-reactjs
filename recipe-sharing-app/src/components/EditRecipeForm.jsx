@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import useRecipeStore from './recipeStore';
+import useRecipeStore from '../store/recipeStore';
 
 const EditRecipeForm = () => {
   const { id } = useParams();
@@ -66,9 +66,10 @@ const EditRecipeForm = () => {
   };
   
   const handleSubmit = (e) => {
+    
     e.preventDefault();
     
-    // Filter out empty strings from arrays
+    
     const cleanData = {
       ...formData,
       ingredients: formData.ingredients.filter(ing => ing.trim() !== ''),
@@ -132,6 +133,7 @@ const EditRecipeForm = () => {
                 value={formData.prepTime}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., 15 min"
               />
             </div>
             
@@ -145,6 +147,7 @@ const EditRecipeForm = () => {
                 value={formData.cookTime}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g., 30 min"
               />
             </div>
             
@@ -190,7 +193,7 @@ const EditRecipeForm = () => {
                 <button
                   type="button"
                   onClick={() => removeArrayField(index, 'ingredients')}
-                  className="bg-red-500 text-white px-3 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white px-3 rounded hover:bg-red-600 disabled:opacity-50"
                   disabled={formData.ingredients.length === 1}
                 >
                   ×
@@ -228,7 +231,7 @@ const EditRecipeForm = () => {
                   <button
                     type="button"
                     onClick={() => removeArrayField(index, 'instructions')}
-                    className="bg-red-500 text-white px-3 rounded hover:bg-red-600 self-start"
+                    className="bg-red-500 text-white px-3 rounded hover:bg-red-600 self-start disabled:opacity-50"
                     disabled={formData.instructions.length === 1}
                   >
                     ×
@@ -238,7 +241,7 @@ const EditRecipeForm = () => {
             ))}
           </div>
           
-          <div className="flex gap-4">
+          <div className="flex gap-4 pt-4">
             <button
               type="submit"
               className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
