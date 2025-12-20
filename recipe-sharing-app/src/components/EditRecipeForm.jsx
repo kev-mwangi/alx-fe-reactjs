@@ -34,7 +34,7 @@ const EditRecipeForm = () => {
   }, [recipe]);
   
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.preventDefault;
     setFormData({
       ...formData,
       [name]: value
